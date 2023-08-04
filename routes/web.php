@@ -55,7 +55,9 @@ Route::get('/lihkgs/{id}', [LihkgController::class, 'show'])->name('lihkg.show')
 
 Route::get('/highest-voted-lihkgs', [HighestVotedLihkgsController::class, 'getHighestVotedLihkgs'])->name('highest-voted-lihkgs');
 
-Route::get('/hv', [HighestVotedLihkgsController::class, 'getHighestVotedLihkgs'])->name('hv');
+Route::get('/welcome', [HighestVotedLihkgsController::class, 'getHighestVotedLihkgs'])->name('welcome');
+
+ 
 
 
 require __DIR__.'/auth.php';
