@@ -1,9 +1,13 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LihkgController;
+use App\Http\Controllers\ReplyController;
+use App\Http\Controllers\HighestVotedLihkgsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +29,8 @@ Route::get('/', function () {
     ]);
 });
 
+
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -34,5 +40,22 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::resource('/lihkg', LihkgController::class)
+    ->only(['index', 'store', 'update', 'destroy'])
+    ->middleware(['auth', 'verified']);
+
+Route::resource('reply', ReplyController::class)
+    ->only(['index', 'store'])
+    ->middleware('auth');
+
+Route::post('/vote/{lihkgId}', [LihkgController::class, 'vote'])->name('vote');
+
+Route::get('/lihkgs/{id}', [LihkgController::class, 'show'])->name('lihkg.show');
+
+Route::get('/highest-voted-lihkgs', [HighestVotedLihkgsController::class, 'getHighestVotedLihkgs'])->name('highest-voted-lihkgs');
+
+Route::get('/hv', [HighestVotedLihkgsController::class, 'getHighestVotedLihkgs'])->name('hv');
+
 
 require __DIR__.'/auth.php';
