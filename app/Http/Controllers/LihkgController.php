@@ -82,9 +82,21 @@ class LihkgController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Lihkg $lihkg)
+    public function show(Lihkg $lihkg,$id)
     {
-        //
+       
+
+        $lihkgs = Lihkg::with('user', 'replies.user')
+        ->findOrFail($id);
+
+    
+
+        $lihkgWithVotes=$lihkgs;
+
+        return Inertia::render("Lihkg/show", [
+            "lihkgsshow" => $lihkgWithVotes,
+        ]);
+       
     }
 
     

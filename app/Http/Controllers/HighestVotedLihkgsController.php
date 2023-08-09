@@ -17,18 +17,34 @@ use Inertia\Response;
 
 class HighestVotedLihkgsController extends Controller
 {
+    
+    
+    public function welcome() {
+        // Retrieve the data from the database or set it as needed
+       
+        $highestVotedLihkgs = Lihkg::with('user', 'replies.user')
+        ->orderBy('vote_count', 'DESC')
+        ->take(10)
+        ->get();
+
+        // Share the data with the Welcome.vue component
+        Inertia::share('highestVotedLihkgs', $highestVotedLihkgs);
+
+        
+        // Return the Welcome.vue component
+        return Inertia::render('Welcome',['canLogin' => route('login'),'canRegister' =>route('register')]);
+    }
+    
     public function getHighestVotedLihkgs()
     {
         // Retrieve the data from the database or set it as needed
-        $highestVotedLihkgs = [
-            ['id' => 1, 'vote_count' => 10, 'message' => 'First item'],
-            ['id' => 2, 'vote_count' => 5, 'message' => 'Second item'],
-        ];
+        $highestVotedLihkgs = Lihkg::with('user', 'replies.user')
+        ->get();
 
         // Share the data with the Welcome.vue component
         Inertia::share('highestVotedLihkgs', $highestVotedLihkgs);
 
         // Return the Welcome.vue component
-        return Inertia::render('Welcome');
+        return Inertia::render('highestvotedlihkgst');
     }
 }
