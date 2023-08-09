@@ -20,10 +20,11 @@ const showingNavigationDropdown = ref(false);
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
+                                <Link :href="route('dashboard')" class="flex">
                                     <ApplicationLogo
-                                        class="block h-9 w-auto fill-current text-gray-800"
+                                        class="w-8 h-14 text-dark fill-current mr-2"
                                     />
+                                    <span class="self-center text-2xl font-semibold whitespace-nowrap logotext">Money-Making Forum</span>
                                 </Link>
                             </div>
 
@@ -34,6 +35,9 @@ const showingNavigationDropdown = ref(false);
                                 </NavLink>
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
+                                </NavLink>
+                                 <NavLink :href="route('welcome')">
+                                    View Frontpage
                                 </NavLink>
                             </div>
                                 

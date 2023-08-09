@@ -20,14 +20,14 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
 
 
 
@@ -55,7 +55,7 @@ Route::get('/lihkgs/{id}', [LihkgController::class, 'show'])->name('lihkg.show')
 
 Route::get('/highest-voted-lihkgs', [HighestVotedLihkgsController::class, 'getHighestVotedLihkgs'])->name('highest-voted-lihkgs');
 
-Route::get('/welcome', [HighestVotedLihkgsController::class, 'getHighestVotedLihkgs'])->name('welcome');
+Route::get('/', [HighestVotedLihkgsController::class, 'welcome'])->name('welcome');
 
  
 

@@ -79,7 +79,8 @@ export default {
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
   />
   <div>
-    <div class="p-6 flex space-x-2">
+    <div class="p-6  space-x-2">
+    <div class="flex">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6 text-gray-600 -scale-x-100"
@@ -142,6 +143,7 @@ export default {
             </template>
           </Dropdown>
         </div>
+      </div>
       </div>
       <div class="flex items-center space-x-2"></div>
       <form
