@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call(User_voteSeeder::class);
         $this->call(UserSeeder::class);
 
+        //
+
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
